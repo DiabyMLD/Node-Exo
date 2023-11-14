@@ -11,7 +11,7 @@
         const { username, email, password } = req.body;
         const newUser = new User({ username, email, password });
         await newUser.save();
-        res.redirect('/user/users');
+        res.redirect('/users');
     };
 
     // Liste des utilisateurs

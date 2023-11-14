@@ -1,8 +1,11 @@
 var express = require('express');
 const { bizareDB } = require('./config/database');
 const twig = require('twig');
+
  //importer le modèle 'User'
 const User = require('./models/User');
+// Importation du fichier de route user.js
+const userRoutes = require('./routes/user');
 
 var app = express();
 
@@ -31,21 +34,9 @@ app.get('/home', (req, res) => {
   res.render('home');
 });
 
-app.get('/register', (req, res) => {
-  res.render('pages/register');
-});
+// Utilisation des routes définies dans user.js
+app.use('/', userRoutes);
 
-app.post('/register', async (req, res) => {
-  const { username, email, password } = req.body;
-  const newUser = new User({ username, email, password });
-  await newUser.save();
-  res.redirect('/users');
-});
-
-app.get('/users', async (req, res) => {
-  const users = await User.find({});
-  res.render('pages/users', { users });
-});
 
 app.listen(3333, () => {
 	console.log(`🚀🚀 Lancement avec succès du server`);
