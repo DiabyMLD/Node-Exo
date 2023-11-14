@@ -14,6 +14,24 @@
         res.redirect('/users');
     };
 
+      // Affichage de la page de modification d'un utilisateur
+      exports.showEditPage = async (req, res) => {
+        const user = await User.findById(req.params.id);
+        res.render('pages/edit', { user });
+    };
+    // Modification d'un utilisateur
+    exports.editUser = async (req, res) => {
+        const { username, email, password } = req.body;
+        await User.findByIdAndUpdate(req.params.id, { username, email, password });
+        res.redirect('/users');
+    };
+
+    // Suppression d'un utilisateur
+    exports.deleteUser = async (req, res) => {
+        await User.findByIdAndDelete(req.params.id);
+        res.redirect('/users');
+    };
+
     // Liste des utilisateurs
     exports.listUsers = async (req, res) => {
         const users = await User.find();
