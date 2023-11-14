@@ -1,0 +1,12 @@
+ <!DOCTYPE html>
+    <html>
+    <head>
+        <title>{% block title %}Mon site{% endblock %}</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+    {% include 'partials/navbar.twig' %}
+    {% block content %}{% endblock %}
+    {% include 'partials/footer.twig' %}
+    </body>
+    </html>
