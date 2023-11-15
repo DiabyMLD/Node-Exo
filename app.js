@@ -21,6 +21,7 @@ app.use(express.static('public'));
 app.set('view engine', 'twig');
 app.set('views', './views');
 
+
 // Route de base pour tester
 // app.get('/', (req, res) => {
 //   res.send('Yeah ! Ça marche ! Je suis dans le navigateur ! 🎉🚀');
